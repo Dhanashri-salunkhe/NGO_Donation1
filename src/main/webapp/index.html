@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Donation Information</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Donation Information</h1>
+
+    <!-- Donation Form -->
+    <form id="donation-form">
+        <label for="donation-amount">Amount:</label>
+        <input type="number" id="donation-amount" name="donation-amount" required>
+
+        <label for="donor-id">Donor ID:</label>
+        <input type="number" id="donor-id" name="donor-id" required>
+
+        <label for="campaign-id">Campaign ID:</label>
+        <input type="number" id="campaign-id" name="campaign-id" required>
+
+        <label for="donation-date">Date:</label>
+        <input type="date" id="donation-date" name="donation-date" required>
+
+        <button type="submit">Add Donation</button>
+    </form>
+
+    <!-- Donations Table -->
+    <table id="donations-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Amount</th>
+                <th>Donor ID</th>
+                <th>Campaign ID</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        
+        <tbody id="donations-tbody">
+            <!-- Donation rows will be populated here -->
+        </tbody>
+    </table>
+
+    <script>
+        // JavaScript to handle form submission and table population can be added here
+        document.getElementById('donation-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Get form values
+            const amount = document.getElementById('donation-amount').value;
+            const donorId = document.getElementById('donor-id').value;
+            const campaignId = document.getElementById('campaign-id').value;
+            const date = document.getElementById('donation-date').value;
+
+            // Create a new row in the table
+            const tbody = document.getElementById('donations-tbody');
+            const newRow = tbody.insertRow();
+
+            newRow.insertCell(0).textContent = tbody.rows.length; // Auto-increment ID
+            newRow.insertCell(1).textContent = amount;
+            newRow.insertCell(2).textContent = donorId;
+            newRow.insertCell(3).textContent = campaignId;
+            newRow.insertCell(4).textContent = date;
+
+            // Reset the form
+            document.getElementById('donation-form').reset();
+        });
+    </script>
+</body>
+</html>
